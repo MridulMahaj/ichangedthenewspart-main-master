@@ -1,0 +1,18 @@
+services:
+  java-ichangedthenewspart-main:
+    build:
+      context: ./ichangedthenewspart-main
+      dockerfile: ../ichangedthenewspart-mainDockerfile
+    container_name: java-ichangedthenewspart-main
+    restart: unless-stopped
+    init: true
+    ports:
+      - "8080:8080"  # Expose Spring Boot default port
+    # env_file: ./.env  # Uncomment if .env file exists
+    networks:
+      - backend
+    # No external database or cache detected in README, Dockerfile, or code structure
+
+networks:
+  backend:
+    driver: bridge
